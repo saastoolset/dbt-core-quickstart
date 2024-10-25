@@ -146,7 +146,7 @@ Use a code editor VSCode to open the project directory
 
 
 - Update `profiles.yml`
-Now we should create the `profiles.yml` file on the `jaffle_shop` directory. The file should look like this:
+Now we should create the `profiles.yml` file on the `C:\Users\YourID\.dbt` directory. The file should look like this:
 
 ```YAML
 jaffle_shop:
@@ -171,20 +171,32 @@ C:> dbt debug
 ``` 
 
 - Load sample data
- We should download this data on the `db/seeds` directory.
+ We should copy this data from the `db/seeds` directory.
 
-Now we can create the PostgreSQL database an insert the dowbloaded data to get along with the tutorial. To do so, just change directory to `db` and execute:
 
-```
-C:> copy ..\db\seeds\*.csv seeds
-C:> dbt seeds
-```
+  - Edit `dbt_project.yml`
+  Now we should create the `dbt_project.yml` file on the `jaffle_shop` directory. Append following config:
 
-This command will spin a PostgreSQL database on localhost and port 5432, and will create the `raw` database, and create and insert the `.csv` files to the following tables:
+  ```YAML
+  seeds:
+    jaffle_shop:
+      +schema: jaffle_shop
+  ```
 
-- `dbt_jaffle_shop.customers`
-- `dbt_jaffle_shop.orders`
-- `dbt_stripe.payments`
+
+  - copy seeds data
+  ```
+  C:> copy ..\db\seeds\*.csv seeds
+  C:> dbt seeds
+  ```
+
+- Verfiy result in database client
+This command will spin and will create the `dbt_jaffle_shop` schema, and create and insert the `.csv` files to the following tables:
+
+  - `dbt_jaffle_shop.customers`
+  - `dbt_jaffle_shop.orders`
+  - `dbt_jaffle_shop.payments`
+
 
 ## [5 Perform your first dbt run​](https://docs.getdbt.com/guides/manual-install?step=5)
 
