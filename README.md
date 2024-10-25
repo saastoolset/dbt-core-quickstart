@@ -5,14 +5,14 @@
 [![Generic badge](https://img.shields.io/badge/Python-3.11.10-blue.svg)](https://www.python.org/)
 [![Generic badge](https://img.shields.io/badge/Podman-5.0.2-blue.svg)](https://www.docker.com/)
 
-`dbt-core` quickstart template in PostgreSQL and podman
-`dbt` quickstart taken from the different [dbt Developer Hub](https://docs.getdbt.com/guides) and [dbt courses](https://courses.getdbt.com/collections), using `PostgreSQL` as the data warehouse. There you are going to find the following  course:
+This is a `dbt-core` quickstart template, that supports PostgreSQL run with podman.
+  
+  This `dbt-core` quickstart taken from the various [dbt Developer Hub](https://docs.getdbt.com/guides) and [dbt courses](https://courses.getdbt.com/collections), using `PostgreSQL` as the data warehouse. There you are going to find the following  course:
 
 - [dbt quickstart](https://docs.getdbt.com/docs/get-started-dbt)
 
-In this tutorial, for the purpose of dbt-core exercises, I made some modifications to the `profiles.yml` file to use the local `PostgreSQL` repository.
+In this tutorial, for the purpose of `dbt-core` exercises, I made some modifications to the `profiles.yml` file to use the local `PostgreSQL` repository.
 
-This is a template for creating a fully functional dbt project for teaching, learning, writing, demoing, or any other scenarios where you need a basic project with a synthesized jaffle shop business.
 
 - [`dbt-core` Quickstart](#dbt-core-quickstart)
 - [Steps](#steps)
