@@ -16,33 +16,6 @@ In this tutorial, for the purpose of dbt-core exercises, I made some modificatio
 
 This is a template for creating a fully functional dbt project for teaching, learning, writing, demoing, or any other scenarios where you need a basic project with a synthesized jaffle shop business.
 
-## How to use github template repo
-
-### 2. Clone to client directory
-Sample as 
-```
-      C:> cd C:\Proj\CUB-EDW\50-GIT\dbt-core-qs-ex1
-```
-
-### 3. Switch to dbt-core-qs-ex1
-
-Sample as 
-```
-      C:> cd C:\Proj\CUB-EDW\50-GIT\dbt-core-qs-ex1
-```
-
-
-### Load sample data
- We should download this data on the `db/seeds` directory.
-
-Now we can create the PostgreSQL database an insert the dowbloaded data to get along with the tutorial. To do so, just change directory to `db` and execute:
-```
-$ dbt seeds
-```
-This command will spin a PostgreSQL database on localhost and port 5432, and will create the `raw` database, and create and insert the `.csv` files to the following tables:
-- `jaffle_shop.customers`
-- `jaffle_shop.orders`
-- `stripe.payments`
 
 
 ### dbt install
@@ -60,6 +33,13 @@ $ dbt init jaffle_shop
 
 This template will develop and run dbt commands using the dbt Cloud CLI — a dbt Cloud powered command line with PostgreSQL.
 
+- Prerequisites
+  - Python/conda
+  - Podman desktop
+  - DBeaver
+  - git client
+  - visual code
+  
 - Install dbt Core
   - For venv and and docker, using the [installation instructions](https://docs.getdbt.com/docs/core/installation-overview) for your operating system.
   - For conda in Windows, open terminal in system administrador priviledge
@@ -141,6 +121,20 @@ jaffle_shop:
       schema: analytics
   target: dev
 ```
+
+
+
+- Load sample data
+ We should download this data on the `db/seeds` directory.
+
+Now we can create the PostgreSQL database an insert the dowbloaded data to get along with the tutorial. To do so, just change directory to `db` and execute:
+```
+$ dbt seeds
+```
+This command will spin a PostgreSQL database on localhost and port 5432, and will create the `raw` database, and create and insert the `.csv` files to the following tables:
+- `jaffle_shop.customers`
+- `jaffle_shop.orders`
+- `stripe.payments`
 
 
 ### [5 Perform your first dbt run​](https://docs.getdbt.com/guides/manual-install?step=5)
@@ -515,3 +509,15 @@ Navigate to your repository, and open a pull request to merge the code into your
 
 - Instead of dbt-cloud, we will leverage airflow to schedule.
 - [dbt airflow blog post](https://docs.getdbt.com/blog/dbt-airflow-spiritual-alignment)
+
+
+### 16 Supplemental Install
+
+- Visual Code Addon
+  - dbt-osmosis
+  - Power User for dbt
+  
+- Python package
+  - dbt-loom
+  
+
