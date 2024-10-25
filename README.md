@@ -17,7 +17,7 @@ This is a template for creating a fully functional dbt project for teaching, lea
 - [`dbt-core` Quickstart](#dbt-core-quickstart)
 - [Steps](#steps)
   - [1 Introduction​](#1-introduction)
-  - [2 Create a repository​](#2-create-a-repository)
+  - [2 Create a repository and env prepare​](#2-create-a-repository-and-env-prepare)
   - [3 Create a project​](#3-create-a-project)
   - [4 Connect to PostgreSQL​](#4-connect-to-postgresql)
   - [5 Perform your first dbt run​](#5-perform-your-first-dbt-run)
@@ -46,14 +46,6 @@ This template will develop and run dbt commands using the dbt Cloud CLI — a db
   - git client
   - visual code
   
-- Install dbt Core
-  - For venv and and docker, using the [installation instructions](https://docs.getdbt.com/docs/core/installation-overview) for your operating system.
-  - For conda in Windows, open terminal in system administrador priviledge
-
-  ```command
-        C:> conda install dbt-core dbt-postgres
-  ```
-
   - ***Windows***: Path review for conda if VSCode have python runtime issue. Following path needs add and move to higher priority.
 
   ```
@@ -62,19 +54,9 @@ This template will develop and run dbt commands using the dbt Cloud CLI — a db
   ```
   
 - Create a GitHub account if you don't already have one.
-- ***Windows***: create shortcut to taskbar
-  - Find application shortcut location
 
-  ![Start Menu](.github/static/FindApp.png)
 
-  - Copy and rename shortcut to venv name
-  - Change location parameter to venv name
-  
-  ![Change location parameter](.github/static/venv_name.png)
-
-  - Pin the shortcut to Start Menu
-
-## [2 Create a repository​](https://docs.getdbt.com/guides/manual-install?step=2)
+## [2 Create a repository and env prepare​](https://docs.getdbt.com/guides/manual-install?step=2)
 
 1. Create a new GitHub repository
 
@@ -88,6 +70,41 @@ This template will develop and run dbt commands using the dbt Cloud CLI — a db
 2. Leave the default values for all other settings.
 3. Click Create repository.
 4. Save the commands from "…or create a new repository on the command line" to use later in Commit your changes.
+5. Install and setup envrionment
+
+- Create python virtual env for dbt
+  - For venv and and docker, using the [installation instructions](https://docs.getdbt.com/docs/core/installation-overview) for your operating system.
+  - For conda in Windows, open conda prompt terminal in system administrador priviledge
+
+    ```
+    (base) C:> cd C:\Proj\CUB-EDW\50-GIT\dbt-core-qs-ex1\bin
+    (base) C:> conda env create -n dbt 
+    (base) C:> conda activate dbt
+    ```
+  - ***Windows***: create shortcut to taskbar
+    - Find application shortcut location
+
+    ![Start Menu](.github/static/FindApp.png)
+
+    - Copy and rename shortcut to venv name
+    - Change location parameter to venv name
+    
+    ![Change location parameter](.github/static/venv_name.png)
+
+    - Pin the shortcut to Start Menu
+
+- Install dbt Core
+  ```command
+        (dbt) C:> conda install dbt-core dbt-postgres
+  ```
+
+- Start up db and pgadmin
+  . use admin/Password as connection
+
+  ```
+  (dbt) C:> db-start-db.bat
+  ``` 
+
 
 ## [3 Create a project​](https://docs.getdbt.com/guides/manual-install?step=3)
 
@@ -97,21 +114,23 @@ Make sure you have dbt Core installed and check the version using the dbt --vers
 C:> dbt --version
 ```
 
-Initiate the jaffle_shop project using the init command:
+- Init project in repository home directory
+  Initiate the jaffle_shop project using the init command:
 
 ```python
+C:> cd C:\Proj\CUB-EDW\50-GIT\dbt-core-qs-ex1
 C:> dbt init jaffle_shop
 ```
 
 Navigate into your project's directory:
 
-```
+```command
 C:> cd jaffle_shop
 ```
 
 Use pwd to confirm that you are in the right spot:
 
-```
+```command
 C:>  cd
 
 (dbt) C:\Proj\CUB-EDW\50-GIT\dbt-core-qs-ex1\jaffle_shop>
@@ -119,54 +138,36 @@ C:>  cd
 
 Use a code editor VSCode to open the project directory
 
-```
+```command
 (dbt) C:\Proj\CUB-EDW\50-GIT\dbt-core-qs-ex1\jaffle_shop> code .
 ```
 
 ## [4 Connect to PostgreSQL​](https://docs.getdbt.com/guides/manual-install?step=4)
 
 
-- Start up db and pgadmin
-  . use admin/Password as connection
-
-```
-(dbt) C:\Proj\CUB-EDW\50-GIT\dbt-core-qs-ex1\bin> db-start-db.bat
-``` 
-
-
 - Update `profiles.yml`
 Now we should create the `profiles.yml` file on the `jaffle_shop` directory. The file should look like this:
 
-```
-config:
-    use_colors: True 
+```YAML
 jaffle_shop:
   outputs:
     dev:
-      type: postgres
-      threads: 1
+      dbname: postgres
       host: localhost
+      user: admin      
+      pass: Passw0rd 
       port: 5432
-      user: "admin"
-      pass: "Passw0rd"
-      dbname: raw
-      schema: dev
-    prod:
-      type: postgres
+      schema: dbt
       threads: 1
-      host: localhost
-      port: 5432
-      user: "admin"
-      pass: "Passw0rd"
-      dbname: raw
-      schema: analytics
+      type: postgres
   target: dev
 ```
-- test connection config
+
+- Test connection config
 
 ```
 C:> cd jaffle_shop
-C:> dbt run
+C:> dbt debug
 ``` 
 
 - Load sample data
@@ -175,14 +176,15 @@ C:> dbt run
 Now we can create the PostgreSQL database an insert the dowbloaded data to get along with the tutorial. To do so, just change directory to `db` and execute:
 
 ```
+C:> copy ..\db\seeds\*.csv seeds
 C:> dbt seeds
 ```
 
 This command will spin a PostgreSQL database on localhost and port 5432, and will create the `raw` database, and create and insert the `.csv` files to the following tables:
 
-- `jaffle_shop.customers`
-- `jaffle_shop.orders`
-- `stripe.payments`
+- `dbt_jaffle_shop.customers`
+- `dbt_jaffle_shop.orders`
+- `dbt_stripe.payments`
 
 ## [5 Perform your first dbt run​](https://docs.getdbt.com/guides/manual-install?step=5)
 
@@ -245,7 +247,7 @@ with customers as (
         first_name,
         last_name
 
-    from jaffle_shop.customers
+    from dbt_jaffle_shop.customers
 
 ),
 
@@ -257,7 +259,7 @@ orders as (
         order_date,
         status
 
-    from jaffle_shop.orders
+    from dbt_jaffle_shop.orders
 
 ),
 
@@ -387,7 +389,7 @@ select
     first_name,
     last_name
 
-from jaffle_shop.customers
+from dbt_jaffle_shop.customers
 ```
   
 ***models/stg_orders.sql***
