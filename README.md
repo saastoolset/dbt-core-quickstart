@@ -1,10 +1,11 @@
 # `dbt-core` Quickstart
+
 [![Generic badge](https://img.shields.io/badge/dbt-1.8.8-blue.svg)](https://docs.getdbt.com/dbt-cli/cli-overview)
 [![Generic badge](https://img.shields.io/badge/PostgreSQL-16-blue.svg)](https://www.postgresql.org/)
 [![Generic badge](https://img.shields.io/badge/Python-3.11.10-blue.svg)](https://www.python.org/)
 [![Generic badge](https://img.shields.io/badge/Podman-5.0.2-blue.svg)](https://www.docker.com/)
 
-`dbt-core` quickstart template in PostgreSQL and podman 
+`dbt-core` quickstart template in PostgreSQL and podman
 `dbt` quickstart taken from the different [dbt Developer Hub](https://docs.getdbt.com/guides) and [dbt courses](https://courses.getdbt.com/collections), using `PostgreSQL` as the data warehouse. There you are going to find the following  course:
 
 - [dbt quickstart](https://docs.getdbt.com/docs/get-started-dbt)
@@ -13,10 +14,7 @@ In this tutorial, for the purpose of dbt-core exercises, I made some modificatio
 
 This is a template for creating a fully functional dbt project for teaching, learning, writing, demoing, or any other scenarios where you need a basic project with a synthesized jaffle shop business.
 
-
-
 ## Steps
-
 
 ### [1 Introduction​](https://docs.getdbt.com/guides/manual-install?step=1)
 
@@ -32,18 +30,36 @@ This template will develop and run dbt commands using the dbt Cloud CLI — a db
 - Install dbt Core
   - For venv and and docker, using the [installation instructions](https://docs.getdbt.com/docs/core/installation-overview) for your operating system.
   - For conda in Windows, open terminal in system administrador priviledge
-```
+
+```command
       C:> conda install dbt-core dbt-postgres
 ```
-  - Create a GitHub account if you don't already have one.
+
+  - ***Windows***: Path review for conda if VSCode have python runtime issue. Following path needs add and move to higher priority.
+
+```
+C:\ProgramData\anaconda3\Scripts
+C:\ProgramData\anaconda3
+```
+  
+- Create a GitHub account if you don't already have one.
+- ***Windows***: create shortcut to taskbar
+  - Find application shortcut location
+
+![Start Menu](.github/static/FindApp.png)
+
+  - Copy and rename shortcut to venv name
+  - Change location parameter to venv name
+
+![Change location parameter](.github/static/venv_name.png)
 
 ### [2 Create a repository​](https://docs.getdbt.com/guides/manual-install?step=2)
 
-1. Create a new GitHub repository 
+1. Create a new GitHub repository
 
-  - Find our Github template repository [dbt-core-quickstart-template](https://github.com/saastoolset/dbt-core-quickstart-template)
-  - Click the big green 'Use this template' button and 'Create a new repository'.
-  - Create a new GitHub repository named **dbt-core-qs-ex1**.
+- Find our Github template repository [dbt-core-quickstart-template](https://github.com/saastoolset/dbt-core-quickstart-template)
+- Click the big green 'Use this template' button and 'Create a new repository'.
+- Create a new GitHub repository named **dbt-core-qs-ex1**.
 
 ![Click use template](.github/static/use-template.gif)
 
@@ -55,19 +71,25 @@ This template will develop and run dbt commands using the dbt Cloud CLI — a db
 ### [3 Create a project​](https://docs.getdbt.com/guides/manual-install?step=3)
 
 Make sure you have dbt Core installed and check the version using the dbt --version command:
+
 ```
 C:> dbt --version
 ```
+
 Initiate the jaffle_shop project using the init command:
+
 ```python
 C:> dbt init jaffle_shop
 ```
+
 Navigate into your project's directory:
+
 ```
 C:> cd jaffle_shop
 ```
 
 Use pwd to confirm that you are in the right spot:
+
 ```
 C:>  cd
 
@@ -75,6 +97,7 @@ C:>  cd
 ```
 
 Use a code editor VSCode to open the project directory
+
 ```
 (dbt) C:\Proj\CUB-EDW\50-GIT\dbt-core-qs-ex1\jaffle_shop> code .
 ```
@@ -111,20 +134,20 @@ jaffle_shop:
   target: dev
 ```
 
-
-
 - Load sample data
  We should download this data on the `db/seeds` directory.
 
 Now we can create the PostgreSQL database an insert the dowbloaded data to get along with the tutorial. To do so, just change directory to `db` and execute:
+
 ```
-$ dbt seeds
+dbt seeds
 ```
+
 This command will spin a PostgreSQL database on localhost and port 5432, and will create the `raw` database, and create and insert the `.csv` files to the following tables:
+
 - `jaffle_shop.customers`
 - `jaffle_shop.orders`
 - `stripe.payments`
-
 
 ### [5 Perform your first dbt run​](https://docs.getdbt.com/guides/manual-install?step=5)
 
@@ -138,7 +161,6 @@ dbt run
 ```
 
 ### [6 Commit your changes​](https://docs.getdbt.com/guides/manual-install?step=6)
-
 
 Commit your changes so that the repository contains the latest code.
 
@@ -158,7 +180,6 @@ git push -u origin main
 ```
 
 Return to your GitHub repository to verify your new files have been added.
-
 
 ### [7 Checkout a new git branch​](https://docs.getdbt.com/guides/manual-install?step=7)
 
@@ -239,7 +260,7 @@ final as (
 select * from final
 ```
 
-- From the command line, enter 
+- From the command line, enter
 
 ```
 dbt run
@@ -257,7 +278,7 @@ By default, everything gets created as a view. You can override that at the dire
     name: 'jaffle_shop'
  ```
 
-  - Configure jaffle_shop so everything in it will be materialized as a table; and configure example so everything in it will be materialized as a view. Update your models config block to:
+- Configure jaffle_shop so everything in it will be materialized as a table; and configure example so everything in it will be materialized as a view. Update your models config block to:
 
 ```
 models:
@@ -298,7 +319,8 @@ You can now delete the files that dbt created when you initialized the project:
 - Delete the models/example/ directory.
 
 - Delete the example: key from your dbt_project.yml file, and any configurations that are listed under it.
-- 
+-
+
 ```
 # before
 models:
@@ -315,7 +337,6 @@ models:
     +materialized: table
 ```
 
-
 ### [11 Build models on top of other models​](https://docs.getdbt.com/guides/manual-install?step=11)
 
 Now you can experiment by separating the logic out into separate models and using the ref function to build models on top of other models:
@@ -324,6 +345,7 @@ Now you can experiment by separating the logic out into separate models and usin
 - Create a second new SQL file, models/stg_orders.sql, with the SQL from the orders CTE in our original query.
 
 ***models/stg_customers.sql***
+
 ```SQL
 select
     id as customer_id,
@@ -334,6 +356,7 @@ from jaffle_shop.customers
 ```
   
 ***models/stg_orders.sql***
+
 ```SQL
 with customers as (
 
@@ -387,11 +410,13 @@ select * from final
 Adding tests to a project helps validate that your models are working correctly.
 
 To add tests to your project:
+
 - Create a new YAML file in the models directory, named models/schema.yml
 
 - Add the following contents to the file:
 
 ***models/schema.yml***
+
 ```SQL
 version: 2
 
@@ -429,7 +454,6 @@ models:
 ```
 
 - Run dbt test, and confirm that all your tests passed.
-
 
 ### [13 Document your models​](https://docs.getdbt.com/guides/manual-install?step=13)
 
@@ -482,10 +506,11 @@ models:
               to: ref('stg_customers')
               field: customer_id
 ```
+
 - Run dbt docs generate to generate the documentation for your project. dbt introspects your project and your warehouse to generate a JSON file with rich documentation about your project.
 - Run dbt docs serve command to launch the documentation in a local website.
-### [14 Commit updated changes​](https://docs.getdbt.com/guides/manual-install?step=14)
 
+### [14 Commit updated changes​](https://docs.getdbt.com/guides/manual-install?step=14)
 
 - You need to commit the changes you made to the project so that the repository has your latest code.
 
@@ -499,7 +524,6 @@ Navigate to your repository, and open a pull request to merge the code into your
 - Instead of dbt-cloud, we will leverage airflow to schedule.
 - [dbt airflow blog post](https://docs.getdbt.com/blog/dbt-airflow-spiritual-alignment)
 
-
 ### 16 Supplemental Install
 
 - Visual Code Addon
@@ -509,4 +533,3 @@ Navigate to your repository, and open a pull request to merge the code into your
 - Python package
   - dbt-loom
   
-
