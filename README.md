@@ -14,9 +14,28 @@ In this tutorial, for the purpose of dbt-core exercises, I made some modificatio
 
 This is a template for creating a fully functional dbt project for teaching, learning, writing, demoing, or any other scenarios where you need a basic project with a synthesized jaffle shop business.
 
-## Steps
+- [`dbt-core` Quickstart](#dbt-core-quickstart)
+- [Steps](#steps)
+  - [1 Introduction​](#1-introduction)
+  - [2 Create a repository​](#2-create-a-repository)
+  - [3 Create a project​](#3-create-a-project)
+  - [4 Connect to PostgreSQL​](#4-connect-to-postgresql)
+  - [5 Perform your first dbt run​](#5-perform-your-first-dbt-run)
+  - [6 Commit your changes​](#6-commit-your-changes)
+  - [7 Checkout a new git branch​](#7-checkout-a-new-git-branch)
+  - [8 Build your first model​](#8-build-your-first-model)
+  - [9 Change the way your model is materialized​](#9-change-the-way-your-model-is-materialized)
+  - [10 Delete the example models​](#10-delete-the-example-models)
+  - [11 Build models on top of other models​](#11-build-models-on-top-of-other-models)
+  - [12 Add tests to your models​](#12-add-tests-to-your-models)
+  - [13 Document your models​](#13-document-your-models)
+  - [14 Commit updated changes​](#14-commit-updated-changes)
+  - [15 Schedule a job​](#15-schedule-a-job)
+  - [16 Supplemental Install](#16-supplemental-install)
 
-### [1 Introduction​](https://docs.getdbt.com/guides/manual-install?step=1)
+# Steps
+
+## [1 Introduction​](https://docs.getdbt.com/guides/manual-install?step=1)
 
 This template will develop and run dbt commands using the dbt Cloud CLI — a dbt Cloud powered command line with PostgreSQL.
 
@@ -31,29 +50,31 @@ This template will develop and run dbt commands using the dbt Cloud CLI — a db
   - For venv and and docker, using the [installation instructions](https://docs.getdbt.com/docs/core/installation-overview) for your operating system.
   - For conda in Windows, open terminal in system administrador priviledge
 
-```command
-      C:> conda install dbt-core dbt-postgres
-```
+  ```command
+        C:> conda install dbt-core dbt-postgres
+  ```
 
   - ***Windows***: Path review for conda if VSCode have python runtime issue. Following path needs add and move to higher priority.
 
-```
-C:\ProgramData\anaconda3\Scripts
-C:\ProgramData\anaconda3
-```
+  ```
+  C:\ProgramData\anaconda3\Scripts
+  C:\ProgramData\anaconda3
+  ```
   
 - Create a GitHub account if you don't already have one.
 - ***Windows***: create shortcut to taskbar
   - Find application shortcut location
 
-![Start Menu](.github/static/FindApp.png)
+  ![Start Menu](.github/static/FindApp.png)
 
   - Copy and rename shortcut to venv name
   - Change location parameter to venv name
+  
+  ![Change location parameter](.github/static/venv_name.png)
 
-![Change location parameter](.github/static/venv_name.png)
+  - Pin the shortcut to Start Menu
 
-### [2 Create a repository​](https://docs.getdbt.com/guides/manual-install?step=2)
+## [2 Create a repository​](https://docs.getdbt.com/guides/manual-install?step=2)
 
 1. Create a new GitHub repository
 
@@ -68,7 +89,7 @@ C:\ProgramData\anaconda3
 3. Click Create repository.
 4. Save the commands from "…or create a new repository on the command line" to use later in Commit your changes.
 
-### [3 Create a project​](https://docs.getdbt.com/guides/manual-install?step=3)
+## [3 Create a project​](https://docs.getdbt.com/guides/manual-install?step=3)
 
 Make sure you have dbt Core installed and check the version using the dbt --version command:
 
@@ -102,7 +123,7 @@ Use a code editor VSCode to open the project directory
 (dbt) C:\Proj\CUB-EDW\50-GIT\dbt-core-qs-ex1\jaffle_shop> code .
 ```
 
-### [4 Connect to PostgreSQL​](https://docs.getdbt.com/guides/manual-install?step=4)
+## [4 Connect to PostgreSQL​](https://docs.getdbt.com/guides/manual-install?step=4)
 
 ***TODO: db setup and seed data***
 
@@ -149,7 +170,7 @@ This command will spin a PostgreSQL database on localhost and port 5432, and wil
 - `jaffle_shop.orders`
 - `stripe.payments`
 
-### [5 Perform your first dbt run​](https://docs.getdbt.com/guides/manual-install?step=5)
+## [5 Perform your first dbt run​](https://docs.getdbt.com/guides/manual-install?step=5)
 
 Perform your first dbt run
 Our sample project has some example models in it. We're going to check that we can run them to confirm everything is in order.
@@ -160,7 +181,7 @@ Enter the run command to build example models:
 dbt run
 ```
 
-### [6 Commit your changes​](https://docs.getdbt.com/guides/manual-install?step=6)
+## [6 Commit your changes​](https://docs.getdbt.com/guides/manual-install?step=6)
 
 Commit your changes so that the repository contains the latest code.
 
@@ -181,7 +202,7 @@ git push -u origin main
 
 Return to your GitHub repository to verify your new files have been added.
 
-### [7 Checkout a new git branch​](https://docs.getdbt.com/guides/manual-install?step=7)
+## [7 Checkout a new git branch​](https://docs.getdbt.com/guides/manual-install?step=7)
 
 Check out a new git branch to work on new code:
 
@@ -196,7 +217,7 @@ $ git checkout -b add-customers-model
 > Switched to a new branch `add-customer-model`
 ```
 
-### [8 Build your first model​](https://docs.getdbt.com/guides/manual-install?step=8)
+## [8 Build your first model​](https://docs.getdbt.com/guides/manual-install?step=8)
 
 - Open your project in your favorite code editor.
 - Create a new SQL file in the models directory, named models/customers.sql.
@@ -266,7 +287,7 @@ select * from final
 dbt run
 ```
 
-### [9 Change the way your model is materialized​](https://docs.getdbt.com/guides/manual-install?step=9)
+## [9 Change the way your model is materialized​](https://docs.getdbt.com/guides/manual-install?step=9)
 
 By default, everything gets created as a view. You can override that at the directory level so everything in that directory will materialize to a different materialization.
 
@@ -312,7 +333,7 @@ with customers as (
 
 - Enter the dbt run command. Your model, customers, should now build as a view.
 
-### [10 Delete the example models​](https://docs.getdbt.com/guides/manual-install?step=10)
+## [10 Delete the example models​](https://docs.getdbt.com/guides/manual-install?step=10)
 
 You can now delete the files that dbt created when you initialized the project:
 
@@ -337,7 +358,7 @@ models:
     +materialized: table
 ```
 
-### [11 Build models on top of other models​](https://docs.getdbt.com/guides/manual-install?step=11)
+## [11 Build models on top of other models​](https://docs.getdbt.com/guides/manual-install?step=11)
 
 Now you can experiment by separating the logic out into separate models and using the ref function to build models on top of other models:
 
@@ -405,7 +426,7 @@ select * from final
 
 - Execute dbt run.
 
-### [12 Add tests to your models​](https://docs.getdbt.com/guides/manual-install?step=12)
+## [12 Add tests to your models​](https://docs.getdbt.com/guides/manual-install?step=12)
 
 Adding tests to a project helps validate that your models are working correctly.
 
@@ -455,7 +476,7 @@ models:
 
 - Run dbt test, and confirm that all your tests passed.
 
-### [13 Document your models​](https://docs.getdbt.com/guides/manual-install?step=13)
+## [13 Document your models​](https://docs.getdbt.com/guides/manual-install?step=13)
 
 Adding documentation to your project allows you to describe your models in rich detail, and share that information with your team. Here, we're going to add some basic documentation to our project.
 
@@ -510,7 +531,7 @@ models:
 - Run dbt docs generate to generate the documentation for your project. dbt introspects your project and your warehouse to generate a JSON file with rich documentation about your project.
 - Run dbt docs serve command to launch the documentation in a local website.
 
-### [14 Commit updated changes​](https://docs.getdbt.com/guides/manual-install?step=14)
+## [14 Commit updated changes​](https://docs.getdbt.com/guides/manual-install?step=14)
 
 - You need to commit the changes you made to the project so that the repository has your latest code.
 
@@ -519,12 +540,12 @@ models:
 - Push your changes to your repository: git push
 Navigate to your repository, and open a pull request to merge the code into your master branch.
 
-### [15 Schedule a job​](https://docs.getdbt.com/guides/manual-install?step=15)
+## [15 Schedule a job​](https://docs.getdbt.com/guides/manual-install?step=15)
 
 - Instead of dbt-cloud, we will leverage airflow to schedule.
 - [dbt airflow blog post](https://docs.getdbt.com/blog/dbt-airflow-spiritual-alignment)
 
-### 16 Supplemental Install
+## 16 Supplemental Install
 
 - Visual Code Addon
   - dbt-osmosis
