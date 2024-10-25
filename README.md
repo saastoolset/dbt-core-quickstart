@@ -15,14 +15,6 @@ This is a template for creating a fully functional dbt project for teaching, lea
 
 
 
-### dbt install
-Once the database is ready, we can install `dbt` and initiate the `dbt` project:
-```
-$ pip3 install dbt-postgres
-$ dbt init jaffle_shop
-```
-
-
 ## Steps
 
 
