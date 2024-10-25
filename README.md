@@ -1,13 +1,10 @@
-# dbt-core-quickstart
-dbt-core quickstart template in PostgreSQL and podman 
-
-
-# `dbt` Quickstart
+# `dbt-core` Quickstart
 [![Generic badge](https://img.shields.io/badge/dbt-1.8.8-blue.svg)](https://docs.getdbt.com/dbt-cli/cli-overview)
-[![Generic badge](https://img.shields.io/badge/PostgreSQL-13-blue.svg)](https://www.postgresql.org/)
+[![Generic badge](https://img.shields.io/badge/PostgreSQL-16-blue.svg)](https://www.postgresql.org/)
 [![Generic badge](https://img.shields.io/badge/Python-3.11.10-blue.svg)](https://www.python.org/)
 [![Generic badge](https://img.shields.io/badge/Podman-5.0.2-blue.svg)](https://www.docker.com/)
 
+`dbt-core` quickstart template in PostgreSQL and podman 
 `dbt` quickstart taken from the different [dbt Developer Hub](https://docs.getdbt.com/guides) and [dbt courses](https://courses.getdbt.com/collections), using `PostgreSQL` as the data warehouse. There you are going to find the following  course:
 
 - [dbt quickstart](https://docs.getdbt.com/docs/get-started-dbt)
