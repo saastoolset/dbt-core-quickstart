@@ -125,8 +125,16 @@ Use a code editor VSCode to open the project directory
 
 ## [4 Connect to PostgreSQL​](https://docs.getdbt.com/guides/manual-install?step=4)
 
-***TODO: db setup and seed data***
 
+- Start up db and pgadmin
+  . use admin/Password as connection
+
+```
+(dbt) C:\Proj\CUB-EDW\50-GIT\dbt-core-qs-ex1\bin> db-start-db.bat
+``` 
+
+
+- Update `profiles.yml`
 Now we should create the `profiles.yml` file on the `jaffle_shop` directory. The file should look like this:
 
 ```
@@ -154,6 +162,12 @@ jaffle_shop:
       schema: analytics
   target: dev
 ```
+- test connection config
+
+```
+C:> cd jaffle_shop
+C:> dbt run
+``` 
 
 - Load sample data
  We should download this data on the `db/seeds` directory.
@@ -161,7 +175,7 @@ jaffle_shop:
 Now we can create the PostgreSQL database an insert the dowbloaded data to get along with the tutorial. To do so, just change directory to `db` and execute:
 
 ```
-dbt seeds
+C:> dbt seeds
 ```
 
 This command will spin a PostgreSQL database on localhost and port 5432, and will create the `raw` database, and create and insert the `.csv` files to the following tables:
