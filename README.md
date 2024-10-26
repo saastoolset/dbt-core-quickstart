@@ -77,7 +77,6 @@ This template will develop and run dbt commands using the dbt Cloud CLI — a db
   - For conda in Windows, open conda prompt terminal in system administrador priviledge
 
     ```
-    (base) C:> cd C:\Proj\CUB-EDW\50-GIT\dbt-core-qs-ex1\bin
     (base) C:> conda env create -n dbt -python 3.11.10
     (base) C:> conda activate dbt
     ```
@@ -94,15 +93,17 @@ This template will develop and run dbt commands using the dbt Cloud CLI — a db
     - Pin the shortcut to Start Menu
 
 - Install dbt Core
-  ```command
-        (dbt) C:> conda install dbt-core dbt-postgres
+  
+  ```
+  (dbt) C:> conda install dbt-core dbt-postgres
   ```
 
 - Start up db and pgadmin
   . use admin/Password as connection
 
   ```
-  (dbt) C:> db-start-pg.bat
+  (dbt) C:> cd C:\Proj\myProject\50-GIT\dbt-core-qs-ex1
+  (dbt) C:> bin\db-start-pg.bat
   ``` 
 
 
@@ -118,7 +119,6 @@ C:> dbt --version
   Initiate the jaffle_shop project using the init command:
 
 ```python
-C:> cd C:\Proj\CUB-EDW\50-GIT\dbt-core-qs-ex1
 C:> dbt init jaffle_shop
 ```
 
@@ -133,13 +133,13 @@ Use pwd to confirm that you are in the right spot:
 ```command
 C:>  cd
 
-(dbt) C:\Proj\CUB-EDW\50-GIT\dbt-core-qs-ex1\jaffle_shop>
+(dbt) C:\Proj\myProject\50-GIT\dbt-core-qs-ex1\jaffle_shop>
 ```
 
 Use a code editor VSCode to open the project directory
 
 ```command
-(dbt) C:\Proj\CUB-EDW\50-GIT\dbt-core-qs-ex1\jaffle_shop> code .
+(dbt) C:\Proj\myProject\50-GIT\dbt-core-qs-ex1\jaffle_shop> code .
 ```
 
 ## [4 Connect to PostgreSQL​](https://docs.getdbt.com/guides/manual-install?step=4)
