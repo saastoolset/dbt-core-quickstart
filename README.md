@@ -102,7 +102,7 @@ This template will develop and run dbt commands using the dbt Cloud CLI — a db
   . use admin/Password as connection
 
   ```
-  (dbt) C:> db-start-db.bat
+  (dbt) C:> db-start-pg.bat
   ``` 
 
 
