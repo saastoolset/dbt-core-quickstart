@@ -166,7 +166,6 @@ jaffle_shop:
 - Test connection config
 
 ```
-C:> cd jaffle_shop
 C:> dbt debug
 ``` 
 
@@ -187,7 +186,7 @@ C:> dbt debug
   - copy seeds data
   ```
   C:> copy ..\db\seeds\*.csv seeds
-  C:> dbt seeds
+  C:> dbt seed
   ```
 
 - Verfiy result in database client
