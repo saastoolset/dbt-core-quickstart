@@ -404,7 +404,17 @@ from dbt_jaffle_shop.customers
 ```
   
 ***models/stg_orders.sql***
+```sql
+select
+    id as order_id,
+    user_id as customer_id,
+    order_date,
+    status
 
+from dbt_jaffle_shop.orders
+```
+
+***models/customers.sql***
 ```SQL
 with customers as (
 
