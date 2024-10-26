@@ -565,8 +565,8 @@ models:
               field: customer_id
 ```
 
-- Run dbt docs generate to generate the documentation for your project. dbt introspects your project and your warehouse to generate a JSON file with rich documentation about your project.
-- Run dbt docs serve command to launch the documentation in a local website.
+- Run ***dbt docs generate*** to generate the documentation for your project. dbt introspects your project and your warehouse to generate a JSON file with rich documentation about your project.
+- Run ***dbt docs serve*** command to launch the documentation in a local website.
 
 ## [14 Commit updated changes​](https://docs.getdbt.com/guides/manual-install?step=14)
 
