@@ -78,7 +78,7 @@ This template will develop and run dbt commands using the dbt Cloud CLI — a db
 
     ```
     (base) C:> cd C:\Proj\CUB-EDW\50-GIT\dbt-core-qs-ex1\bin
-    (base) C:> conda env create -n dbt 
+    (base) C:> conda env create -n dbt -python 3.11.10
     (base) C:> conda activate dbt
     ```
   - ***Windows***: create shortcut to taskbar
