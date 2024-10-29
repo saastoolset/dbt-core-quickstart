@@ -77,7 +77,7 @@ This template will develop and run dbt commands using the dbt Cloud CLI — a db
   - For conda in Windows, open conda prompt terminal in system administrador priviledge
 
     ```
-    (base) C:> conda env create -n dbt -python 3.11.10
+    (base) C:> conda create -n dbt 
     (base) C:> conda activate dbt
     ```
   - ***Windows***: create shortcut to taskbar
