@@ -74,12 +74,13 @@ This template will develop and run dbt commands using the dbt Cloud CLI — a db
 
 - Create python virtual env for dbt
   - For venv and and docker, using the [installation instructions](https://docs.getdbt.com/docs/core/installation-overview) for your operating system.
-  - For conda in Windows, open conda prompt terminal in system administrador priviledge
+  - For conda in Windows, open conda prompt terminal in ***system administrador priviledge***
 
-    ```
-    (base) C:> conda create -n dbt 
+    ```command
+    (base) C:> conda create -n dbt dbt-core dbt-postgres
     (base) C:> conda activate dbt
     ```
+    
   - ***Windows***: create shortcut to taskbar
     - Find application shortcut location
 
@@ -92,11 +93,6 @@ This template will develop and run dbt commands using the dbt Cloud CLI — a db
 
     - Pin the shortcut to Start Menu
 
-- Install dbt Core
-  
-  ```
-  (dbt) C:> conda install dbt-core dbt-postgres
-  ```
 
 - Start up db and pgadmin
   . use admin/Password as connection
